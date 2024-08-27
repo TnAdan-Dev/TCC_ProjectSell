@@ -1,3 +1,11 @@
+@import './fonts.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+      @apply font-ubuntu; /* Defina a fonte 'Ubuntu' globalmente */
+    }
+  }

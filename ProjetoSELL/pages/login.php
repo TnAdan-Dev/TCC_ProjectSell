@@ -1,7 +1,7 @@
 <?php
   session_start();
-  if(isset($_session['usuario'])){
-    Header('location:./inicio.php');
+  if(isset($_session['idcliente'])){
+    Header('location:../index.php');
     }
 
   if (count($_POST) > 0) {
@@ -22,7 +22,7 @@
 
         if ($row) {
 
-            header('Location: autenticacao.php');
+            header('Location: ../index.php');
             $_SESSION['idcliente'] = $row['id_cliente'];
             $_SESSION['nome'] = $row['cli_nome'];
             $_SESSION['email'] = $row['cli_email'];

@@ -5,3 +5,5 @@
      echo ($_SESSION['cpf']. "<br>");
      echo ($_SESSION['telefone']. "<br>");
      echo ($_SESSION['email']. "<br>");
+header('../index.php');
+

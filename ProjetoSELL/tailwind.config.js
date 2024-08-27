@@ -8,6 +8,9 @@ module.exports = {
     './js/**/*.js',  ],
     theme: {
       extend: {
+        fontFamily: {
+          ubuntu: ['Ubuntu', 'sans-serif'], // Definindo 'Ubuntu' como uma opção de fonte
+        },
         colors:{
           darkBg: '#100c0c',
           primary: '#875145',
