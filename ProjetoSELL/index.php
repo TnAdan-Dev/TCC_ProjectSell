@@ -1,8 +1,8 @@
 <?php
 session_start();
-// if(!isset($_SESSION['idcliente'])){
-//   Header('location:pages/login.php');
-// }
+ if(!isset($_SESSION['idcliente'])){
+   Header('location:pages/login.php');
+}
 $clienteLogado = isset($_SESSION['idcliente']);
 
 ?>
@@ -17,9 +17,9 @@ $clienteLogado = isset($_SESSION['idcliente']);
   <link rel="icon" href="img/iconJGM.png">
 </head>
 
-<body>
+<body class="">
 
-  <div class="bg-white">
+  <div class="bg-white font-ubuntu">
 
     <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
 
@@ -505,20 +505,20 @@ $clienteLogado = isset($_SESSION['idcliente']);
 
             <div class="ml-auto flex items-center">
               <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-              <?php if ($clienteLogado): ?>
-                <!-- Exibe o ícone de usuário -->
-                <div class="text-white">
-                  <a href="backend/sessionclear.php">
-                  <img src="img/do-utilizador.png" alt="">
-                  </a>
-                 
-                </div>
-            <?php else: ?>
-                <!-- Exibe os botões de Login e Cadastro -->
-                <a href="pages/login.php" class="text-black">Login</a>
-                <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-                <a href="pages/cadastro.php" class="text-black">Cadastro</a>
-            <?php endif; ?>
+                <?php if ($clienteLogado): ?>
+                  <!-- Exibe o ícone de usuário -->
+                  <div class="text-white">
+                    <a href="backend/sessionclear.php">
+                      <img src="img/do-utilizador.png" alt="">
+                    </a>
+
+                  </div>
+                <?php else: ?>
+                  <!-- Exibe os botões de Login e Cadastro -->
+                  <a href="pages/login.php" class="text-black">Login</a>
+                  <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
+                  <a href="pages/cadastro.php" class="text-black">Cadastro</a>
+                <?php endif; ?>
 
 
               </div>

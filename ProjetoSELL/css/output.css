@@ -3,7 +3,7 @@
 
   src: url('../fonts/Ubuntu-Regular.ttf') format('truetype');
 
-  font-weight: 400;
+  font-weight: 800;
 
   font-style: normal;
 }
@@ -4258,6 +4258,10 @@ details.collapse summary::-webkit-details-marker {
 
 .pt-px {
   padding-top: 1px;
+}
+
+.font-ubuntu {
+  font-family: Ubuntu, sans-serif;
 }
 
 .text-2xl {
