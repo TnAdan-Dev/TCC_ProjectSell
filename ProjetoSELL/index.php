@@ -21,14 +21,14 @@ $clienteLogado = isset($_SESSION['idcliente']);
 
   <div class="bg-white font-ubuntu">
 
-    <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
+    <div class="relative z-40 hidden" role="dialog" aria-modal="true" id="item3">
 
       <div class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
 
       <div class="fixed inset-0 z-40 flex">
         <div class="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
           <div class="flex px-4 pb-2 pt-5">
-            <button type="button" class="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400">
+            <button type="button" class="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400" id="item3-btn2">
               <span class="absolute -inset-0.5"></span>
               <span class="sr-only">Close menu</span>
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -40,7 +40,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
           <div class="mt-2">
             <div class="border-b border-gray-200">
               <div class="-mb-px flex space-x-8 px-4" aria-orientation="horizontal" role="tablist">
-                <button id="tabs-1-tab-1" class="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900" aria-controls="tabs-1-panel-1" role="tab" type="button">Feminina</button>
+                <button id="tabs-1-tab-1" class="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900 " aria-controls="tabs-1-panel-1" role="tab" type="button">Feminina</button>
                 <button id="tabs-1-tab-2" class="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900" aria-controls="tabs-1-panel-2" role="tab" type="button">Infantil</button>
               </div>
             </div>
@@ -261,7 +261,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
       <nav aria-label="Top" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="border-b border-gray-200">
           <div class="flex h-16 items-center">
-            <button type="button" class="relative rounded-md bg-white p-2 text-gray-400 lg:hidden">
+            <button type="button" class="relative rounded-md bg-white p-2 text-gray-400 lg:hidden" id="item3-btn">
               <span class="absolute -inset-0.5"></span>
               <span class="sr-only">Open menu</span>
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
