@@ -397,7 +397,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
                     <button type="button" class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800" aria-expanded="false" id="item2-btn">Infantil</button>
                   </div>
 
-                  <div class="absolute inset-x-0 top-full text-sm text-gray-500" id="item2">
+                  <div class="absolute inset-x-0 top-full text-sm text-gray-500 hidden" id="item2">
                     <div class="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true"></div>
 
                     <div class="relative bg-white">
