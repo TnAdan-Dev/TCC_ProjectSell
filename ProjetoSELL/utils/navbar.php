@@ -2,8 +2,6 @@
 //  if(!isset($_SESSION['idcliente'])){
 //    Header('location:pages/login.php');
 // }
-$base_url = dirname($_SERVER["PHP_SELF"]);
-$base_url = rtrim($base_url,'/pages/aliancas');
 
 
 $clienteLogado = isset($_SESSION['idcliente']);
@@ -15,8 +13,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/output.css">
-  <link rel="icon" href="../img/iconJGM.png">
+  <link rel="stylesheet" href="<?php echo $base_url; ?>/css/output.css">
 </head>
 
 <body class="">
@@ -554,7 +551,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
     </header>
   </div>
 
-  <script src="../js/inicio.js"></script>
+  <script src="<?php echo $base_url; ?>/js/inicio.js"></script>
 
 </body>
 

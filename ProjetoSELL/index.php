@@ -1,10 +1,11 @@
 <?php
 session_start();
-//  if(!isset($_SESSION['idcliente'])){
-//    Header('location:pages/login.php');
-// }
-$clienteLogado = isset($_SESSION['idcliente']);
 
+$base_url = dirname($_SERVER["PHP_SELF"]);
+$base_url = rtrim($base_url,'/pages/aliancas');
+
+
+$clienteLogado = isset($_SESSION['idcliente']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,10 +19,23 @@ $clienteLogado = isset($_SESSION['idcliente']);
 </head>
 
 <body class="">
+<?php
+require_once 'utils/navbar.php'
+?>
+teste
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
+
 <?php 
-require_once 'utils/navbar.php'; ?>
+require_once 'utils/footer.php'
+?>
+ 
+
+
   
 
 </body>
 
 </html>
+
+
