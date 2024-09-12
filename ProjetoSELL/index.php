@@ -2,7 +2,7 @@
 session_start();
 
 $base_url = dirname($_SERVER["PHP_SELF"]);
-$base_url = rtrim($base_url,'/pages/aliancas');
+$base_url = rtrim($base_url, '/pages/aliancas');
 
 
 $clienteLogado = isset($_SESSION['idcliente']);
@@ -19,23 +19,22 @@ $clienteLogado = isset($_SESSION['idcliente']);
 </head>
 
 <body class="">
-<?php
-require_once 'utils/navbar.php'
-?>
-teste
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br>
+  <?php
+  require_once 'utils/navbar.php'
+  ?>
+  teste
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br>
 
-<?php 
-require_once 'utils/footer.php'
-?>
- 
+  <?php
+
+  require_once 'utils/footer.php';
+  ?>
 
 
-  
 
+
+  <script src="<?php echo $base_url; ?>/js/inicio.js"></script>
 </body>
 
 </html>
-
-
