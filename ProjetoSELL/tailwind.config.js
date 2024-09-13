@@ -6,6 +6,7 @@ module.exports = {
     './pages/**/*.php',
     './css/**/*.css',
     './js/**/*.js',  ],
+    darkmode: 'class',
     theme: {
       extend: {
         fontFamily: {
