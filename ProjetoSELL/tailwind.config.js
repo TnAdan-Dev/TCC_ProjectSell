@@ -4,6 +4,7 @@ module.exports = {
     './src/**/*.{html,js,php}', 
     './index.php',
     './pages/**/*.php',
+    './utils/**/*.php',
     './css/**/*.css',
     './js/**/*.js',  ],
     darkmode: 'class',
