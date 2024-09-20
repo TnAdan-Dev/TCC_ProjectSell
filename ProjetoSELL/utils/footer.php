@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <footer class="footer bg-base-200 text-base-content p-10">
+    <footer class="footer bg-white text-black p-10 border-t-2">
         <aside>
             <svg
                 width="50"

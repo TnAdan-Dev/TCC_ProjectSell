@@ -24,8 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
       item2.classList.add("hidden"); // Oculta o Item 2
     }
   });
-  // Função para verificar a largura da tela e mostrar/esconder o item 3
-  // Função para abrir o item 3
   function openItem3() {
     if (window.innerWidth < 1024) {
       item3.classList.remove("hidden"); // Mostra o item 3

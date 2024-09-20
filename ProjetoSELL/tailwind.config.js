@@ -11,12 +11,12 @@ module.exports = {
     theme: {
       extend: {
         fontFamily: {
-          ubuntu: ['Ubuntu', 'sans-serif'], // Definindo 'Ubuntu' como uma opção de fonte
+          ubuntu: ['Ubuntu', 'sans-serif'],
         },
         colors:{
           darkBg: '#100c0c',
-          primary: '#875145',
-          secondary: '#d29c9a',
+          myprimary: '#875145',
+          mysecondary: '#d29c9a',
         },
         gridTemplateRows: {
           '[auto,auto,1fr]': 'auto auto 1fr',

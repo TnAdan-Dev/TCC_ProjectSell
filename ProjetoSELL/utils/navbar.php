@@ -1,11 +1,13 @@
 <?php
-//  if(!isset($_SESSION['idcliente'])){
-//    Header('location:pages/login.php');
-// }
+
+$base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+$base_url .= "://".$_SERVER['HTTP_HOST'];
+$base_url .= "/TCC_ProjectSell/ProjetoSELL/";  // Ajuste para incluir o caminho até a pasta do projeto
+
+
 
 
 $clienteLogado = isset($_SESSION['idcliente']);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,7 +20,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
 <body class="">
 
   <div class="bg-white font-ubuntu">
-
+    <!-- parte responsiva -->
     <div class="relative z-40 hidden" role="dialog" aria-modal="true" id="item3">
 
       <div class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
@@ -254,7 +256,8 @@ $clienteLogado = isset($_SESSION['idcliente']);
       </div>
     </div>
 
-    <header class="relative bg-white">
+    <!-- parte normal(pc) -->
+    <header class="relative bg-white z-10 border-b-2">
 
       <nav aria-label="Top" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="border-b border-gray-200">
@@ -270,7 +273,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
             <div class="ml-4 flex lg:ml-0">
               <a href="<?php echo $base_url; ?>/index.php">
                 <span class="sr-only">Joyce Galvão Modas</span>
-                <img class="h-8 w-auto" src="img/iconJGM.png" alt="">
+                <img class="h-8 w-auto hover:scale-105 hover:drop-shadow-2xl transition-all duration-300" src="<?php echo $base_url; ?>/img/iconJGM.png" alt="">
               </a>
             </div>
 
@@ -278,7 +281,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
               <div class="flex h-full space-x-8">
                 <div class="flex">
                   <div class="relative flex">
-                    <button type="button" class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800" aria-expanded="false" id="item1-btn">Feminino</button>
+                    <button type="button" class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 ease-out hover:scale-105 transition-all duration-300 hover:text-myprimary" aria-expanded="false" id="item1-btn">Feminino</button>
                   </div>
                   <div class="absolute inset-x-0 top-full text-sm text-gray-500 hidden" id="item1">
                     <div class="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true"></div>
@@ -392,7 +395,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
                 </div>
                 <div class="flex">
                   <div class="relative flex">
-                    <button type="button" class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800" aria-expanded="false" id="item2-btn">Infantil</button>
+                    <button type="button" class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 ease-out hover:scale-105 transition-all duration-300 hover:text-myprimary" aria-expanded="false" id="item2-btn">Infantil</button>
                   </div>
 
                   <div class="absolute inset-x-0 top-full text-sm text-gray-500 hidden" id="item2">
@@ -497,25 +500,23 @@ $clienteLogado = isset($_SESSION['idcliente']);
                   </div>
                 </div>
 
-                <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Alianças</a>
+                <a href="#" class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 ease-out hover:scale-105 transition-all duration-300 hover:text-myprimary">Alianças</a>
               </div>
             </div>
 
             <div class="ml-auto flex items-center">
               <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                 <?php if ($clienteLogado): ?>
-                  <!-- Exibe o ícone de usuário -->
-                  <div class="text-white">
-                    <a href="backend/sessionclear.php">
+                  <div class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 ease-out hover:scale-105 transition-all duration-300 hover:text-black">
+                    <a href="<?php echo $base_url; ?>/backend/sessionclear.php">
                       <img src="img/do-utilizador.png" alt="">
                     </a>
 
                   </div>
                 <?php else: ?>
-                  <!-- Exibe os botões de Login e Cadastro -->
-                  <a href="pages/login.php" class="text-black">Login</a>
+                  <a href="<?php echo $base_url; ?>/pages/login.php" class="text-black hover:text-myprimary hover:scale-105 transition-all duration-300">Login</a>
                   <span class="h-6 w-px bg-gray-200" aria-hidden="true"></span>
-                  <a href="pages/cadastro.php" class="text-black">Cadastro</a>
+                  <a href="<?php echo $base_url; ?>/pages/cadastro.php" class="text-black hover:text-myprimary hover:scale-105 transition-all duration-300">Cadastro</a>
                 <?php endif; ?>
 
 
@@ -525,7 +526,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
 
               <!-- Search -->
               <div class="flex lg:ml-6">
-                <a href="#" class="p-2 text-gray-400 hover:text-gray-500">
+                <a href="<?php echo $base_url; ?>/pages/pesquisa.php" class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 ease-out hover:scale-105 transition-all duration-300 hover:text-myprimary">
                   <span class="sr-only">Search</span>
                   <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -535,7 +536,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
 
               <!-- Cart -->
               <div class="ml-4 flow-root lg:ml-6">
-                <a href="#" class="group -m-2 flex items-center p-2">
+                <a href="<?php echo $base_url; ?>/pages/cartsingle/[id].php" class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 ease-out hover:scale-105 transition-all duration-300 hover:text-myprimary">
                   <svg class="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                   </svg>
@@ -543,14 +544,14 @@ $clienteLogado = isset($_SESSION['idcliente']);
                   <span class="sr-only">items in cart, view bag</span>
                 </a>
               </div>
-              <div class="ml-4 flow-root lg:ml-6">
+              <div class="ml-4 flow-root lg:ml-6 mt-2">
                 <label class="swap swap-rotate">
                   <!-- this hidden checkbox controls the state -->
-                  <input type="checkbox" class="theme-controller hidden" value="synthwave" />
+                  <input type="checkbox" class="theme-controller hidden" value="dark" />
 
                   <!-- sun icon -->
                   <svg
-                    class="swap-off h-7 w-7 fill-current"
+                    class="swap-off h-7 w-7 fill-current text-myprimary"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24">
                     <path
@@ -559,7 +560,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
 
                   <!-- moon icon -->
                   <svg
-                    class="swap-on h-7 w-7 fill-current"
+                    class="swap-on h-7 w-7 fill-current text-mysecondary"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24">
                     <path
@@ -575,7 +576,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
   </div>
 
 
-
+  <script src="<?= $base_url ?>/js/inicio.js"></script>
 </body>
 
 </html>
