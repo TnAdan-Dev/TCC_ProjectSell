@@ -1,39 +1,36 @@
 <?php
   session_start();
-  if(isset($_session['idcliente'])){
-    Header('location:../index.php');
-    }
+  if (isset($_SESSION['idcliente'])) {
+    header('Location: ../index.php'); 
+    exit;
+  } 
 
-  if (count($_POST) > 0) {
-    require_once "../backend/conexao.php";
-    $conexao = novaConexao(); 
+  include '../backend/conexao.php';
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    try {
-        $sql = "SELECT * FROM tbl_cliente WHERE cli_email = :email AND cli_senha = :senha";
-        $stmt = $conexao->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':senha', $senha);
-        $stmt->execute();
-        
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $conexao = novaConexao();
 
-        if ($row) {
+    // Busca o usuário pelo e-mail
+    $stmt = $conexao->prepare("SELECT id_cliente, cli_senha FROM tbl_cliente WHERE cli_email = ?");
+    $stmt->execute([$email]);
 
-            header('Location: ../index.php');
-            $_SESSION['idcliente'] = $row['id_cliente'];
-            $_SESSION['nome'] = $row['cli_nome'];
-            $_SESSION['email'] = $row['cli_email'];
-            $_SESSION['telefone'] = $row['cli_telefone'];
-            $_SESSION['cpf'] = $row['cli_cpf'];
-            exit(); 
+    if ($stmt->rowCount() > 0) {
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Verifica se a senha hashada bate com a senha fornecida
+        if (password_verify($senha, $usuario['cli_senha'])) {
+            // Senha correta, inicia a sessão
+            $_SESSION['usuario_id'] = $usuario['id_cliente'];
+            header('Location: index.php'); // Redireciona para a página inicial
+            exit;
         } else {
-            echo '<script>alert("Usuário ou senha incorretos");</script>';
+          echo "<script>alert('A senha está incorreta');</script>";
         }
-    } catch (PDOException $e) {
-        echo "Mensagem de erro: " . $e->getMessage();
+    } else {
+        echo "<script>alert('Usuário não encontrado!')</script>";
     }
 }
 ?>

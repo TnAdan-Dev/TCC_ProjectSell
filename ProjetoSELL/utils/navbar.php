@@ -1,7 +1,7 @@
 <?php
 
 $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
-$base_url .= "://".$_SERVER['HTTP_HOST'];
+$base_url .= "://" . $_SERVER['HTTP_HOST'];
 $base_url .= "/TCC_ProjectSell/ProjetoSELL/";  // Ajuste para incluir o caminho até a pasta do projeto
 
 
@@ -296,9 +296,9 @@ $clienteLogado = isset($_SESSION['idcliente']);
                               </div>
                               <a href="#" class="mt-6 block font-medium text-gray-900">
                                 <span class="absolute inset-0 z-10" aria-hidden="true"></span>
-                                New Arrivals
+                                Chegadas
                               </a>
-                              <p aria-hidden="true" class="mt-1">Shop now</p>
+                              <p aria-hidden="true" class="mt-1">Comprar Agora</p>
                             </div>
                             <div class="group relative text-base sm:text-sm">
                               <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
@@ -306,84 +306,81 @@ $clienteLogado = isset($_SESSION['idcliente']);
                               </div>
                               <a href="#" class="mt-6 block font-medium text-gray-900">
                                 <span class="absolute inset-0 z-10" aria-hidden="true"></span>
-                                Basic Tees
+                                Camisetas Basicas
                               </a>
-                              <p aria-hidden="true" class="mt-1">Shop now</p>
+                              <p aria-hidden="true" class="mt-1">Comprar Agora</p>
                             </div>
                           </div>
                           <div class="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                             <div>
-                              <p id="Clothing-heading" class="font-medium text-gray-900">Clothing</p>
+                              <p id="Clothing-heading" class="font-medium text-gray-900">Roupas</p>
                               <ul role="list" aria-labelledby="Clothing-heading" class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
                                 <li class="flex">
                                   <a href="#" class="hover:text-gray-800">Tops</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Dresses</a>
+                                  <a href="#" class="hover:text-gray-800">Vestidos</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Pants</a>
+                                  <a href="#" class="hover:text-gray-800">Calças</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Denim</a>
+                                  <a href="#" class="hover:text-gray-800">Jeans</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Sweaters</a>
+                                  <a href="#" class="hover:text-gray-800">Suéteres</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">T-Shirts</a>
+                                  <a href="#" class="hover:text-gray-800">Camisetas</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Jackets</a>
+                                  <a href="#" class="hover:text-gray-800">Jaquetas</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Activewear</a>
-                                </li>
-                                <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Browse All</a>
+                                  <a href="#" class="hover:text-gray-800">Academia</a>
                                 </li>
                               </ul>
                             </div>
                             <div>
-                              <p id="Accessories-heading" class="font-medium text-gray-900">Accessories</p>
+                              <p id="Accessories-heading" class="font-medium text-gray-900">Acessorios</p>
                               <ul role="list" aria-labelledby="Accessories-heading" class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Watches</a>
+                                  <a href="#" class="hover:text-gray-800">Relogios</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Wallets</a>
+                                  <a href="#" class="hover:text-gray-800">Carteiras</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Bags</a>
+                                  <a href="#" class="hover:text-gray-800">Bolsas</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Sunglasses</a>
+                                  <a href="#" class="hover:text-gray-800">Oculos de Sol</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Hats</a>
+                                  <a href="#" class="hover:text-gray-800">Chapéus</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Belts</a>
+                                  <a href="#" class="hover:text-gray-800">Cintos</a>
                                 </li>
                               </ul>
                             </div>
                             <div>
-                              <p id="Brands-heading" class="font-medium text-gray-900">Brands</p>
+                              <p id="Brands-heading" class="font-medium text-gray-900">Marcas</p>
                               <ul role="list" aria-labelledby="Brands-heading" class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Full Nelson</a>
+                                  <a href="#" class="hover:text-gray-800">Marca X</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">My Way</a>
+                                  <a href="#" class="hover:text-gray-800">Marca Y</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Re-Arranged</a>
+                                  <a href="#" class="hover:text-gray-800">Marca Z</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Counterfeit</a>
+                                  <a href="#" class="hover:text-gray-800">Marca A</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Significant Other</a>
+                                  <a href="#" class="hover:text-gray-800">Marca B</a>
                                 </li>
                               </ul>
                             </div>
@@ -411,9 +408,9 @@ $clienteLogado = isset($_SESSION['idcliente']);
                               </div>
                               <a href="#" class="mt-6 block font-medium text-gray-900">
                                 <span class="absolute inset-0 z-10" aria-hidden="true"></span>
-                                New Arrivals
+                                Novas Chegadas
                               </a>
-                              <p aria-hidden="true" class="mt-1">Shop now</p>
+                              <p aria-hidden="true" class="mt-1">Comprar Agora</p>
                             </div>
                             <div class="group relative text-base sm:text-sm">
                               <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
@@ -421,35 +418,32 @@ $clienteLogado = isset($_SESSION['idcliente']);
                               </div>
                               <a href="#" class="mt-6 block font-medium text-gray-900">
                                 <span class="absolute inset-0 z-10" aria-hidden="true"></span>
-                                Artwork Tees
+                                Camisetas Infantis
                               </a>
-                              <p aria-hidden="true" class="mt-1">Shop now</p>
+                              <p aria-hidden="true" class="mt-1">Comprar Agora</p>
                             </div>
                           </div>
                           <div class="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                             <div>
-                              <p id="Clothing-heading" class="font-medium text-gray-900">Clothing</p>
+                              <p id="Clothing-heading" class="font-medium text-gray-900">Roupas</p>
                               <ul role="list" aria-labelledby="Clothing-heading" class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Tops</a>
+                                  <a href="#" class="hover:text-gray-800">Camisetas</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Pants</a>
+                                  <a href="#" class="hover:text-gray-800">Calças</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Sweaters</a>
+                                  <a href="#" class="hover:text-gray-800">Moletons</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">T-Shirts</a>
+                                  <a href="#" class="hover:text-gray-800">Jaquetas</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Jackets</a>
+                                  <a href="#" class="hover:text-gray-800">Roupas de Banho</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Activewear</a>
-                                </li>
-                                <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Browse All</a>
+                                  <a href="#" class="hover:text-gray-800">pijamas</a>
                                 </li>
                               </ul>
                             </div>
@@ -457,39 +451,33 @@ $clienteLogado = isset($_SESSION['idcliente']);
                               <p id="Accessories-heading" class="font-medium text-gray-900">Accessories</p>
                               <ul role="list" aria-labelledby="Accessories-heading" class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Watches</a>
+                                  <a href="#" class="hover:text-gray-800">Chapéus</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Wallets</a>
+                                  <a href="#" class="hover:text-gray-800">Suspensorios</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Bags</a>
+                                  <a href="#" class="hover:text-gray-800">Cintos</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Sunglasses</a>
-                                </li>
-                                <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Hats</a>
-                                </li>
-                                <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Belts</a>
+                                  <a href="#" class="hover:text-gray-800">Oculos Escuros</a>
                                 </li>
                               </ul>
                             </div>
                             <div>
-                              <p id="Brands-heading" class="font-medium text-gray-900">Brands</p>
+                              <p id="Brands-heading" class="font-medium text-gray-900">Marcas</p>
                               <ul role="list" aria-labelledby="Brands-heading" class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Re-Arranged</a>
+                                  <a href="#" class="hover:text-gray-800">Marca X</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Counterfeit</a>
+                                  <a href="#" class="hover:text-gray-800">Marca Y</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">Full Nelson</a>
+                                  <a href="#" class="hover:text-gray-800">Marca Z</a>
                                 </li>
                                 <li class="flex">
-                                  <a href="#" class="hover:text-gray-800">My Way</a>
+                                  <a href="#" class="hover:text-gray-800">Marca A</a>
                                 </li>
                               </ul>
                             </div>
@@ -546,10 +534,9 @@ $clienteLogado = isset($_SESSION['idcliente']);
               </div>
               <div class="ml-4 flow-root lg:ml-6 mt-2">
                 <label class="swap swap-rotate">
-                  <!-- this hidden checkbox controls the state -->
+                  <!-- não tirar o hidden -->
                   <input type="checkbox" class="theme-controller hidden" value="dark" />
-
-                  <!-- sun icon -->
+                  <!-- sol -->
                   <svg
                     class="swap-off h-7 w-7 fill-current text-myprimary"
                     xmlns="http://www.w3.org/2000/svg"
@@ -557,8 +544,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
                     <path
                       d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
                   </svg>
-
-                  <!-- moon icon -->
+                  <!-- lua -->
                   <svg
                     class="swap-on h-7 w-7 fill-current text-mysecondary"
                     xmlns="http://www.w3.org/2000/svg"

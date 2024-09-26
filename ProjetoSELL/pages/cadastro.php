@@ -1,39 +1,49 @@
 <?php
-  session_start();
-  if(isset($_session['idcliente'])){
-    Header('location:../index.php');
-    }
+session_start();
+if (isset($_SESSION['idcliente'])) {
+  header('Location: ../index.php'); 
+  exit;
+} 
+include '../backend/conexao.php';
 
-  if (count($_POST) > 0) {
-    require_once "../backend/conexao.php";
-    $conexao = novaConexao(); 
+// Função para formatar CPF
+function formatarCPF($cpf) {
+    $cpf = preg_replace("/[^0-9]/", "", $cpf); // Remove qualquer caractere que não seja número
+    return substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
+}
 
+// Função para formatar Telefone
+function formatarTelefone($telefone) {
+    $telefone = preg_replace("/[^0-9]/", "", $telefone); // Remove qualquer caractere que não seja número
+    return '(' . substr($telefone, 0, 2) . ')' . substr($telefone, 2, 5) . '-' . substr($telefone, 7);
+}
+
+if (count($_POST) > 0) {
+    $nome = $_POST['nome'];
     $email = $_POST['email'];
+    $cpf = formatarCPF($_POST['cpf']);
+    $telefone = formatarTelefone($_POST['telefone']);
+    $datanasc = $_POST['datanasc']; // Formato esperado: aaaa-mm-dd
     $senha = $_POST['senha'];
+    $passwordconfirm = $_POST['passwordconfirm'];
+    $data_cadastro = date('Y-m-d'); // Data atual no formato aaaa-mm-dd
 
-    try {
-        $sql = "SELECT * FROM tbl_cliente WHERE cli_email = :email AND cli_senha = :senha";
-        $stmt = $conexao->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':senha', $senha);
-        $stmt->execute();
-        
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $conexao = novaConexao();
 
-        if ($row) {
+    // Verifica se o e-mail ou CPF já existem
+    $stmt = $conexao->prepare("SELECT * FROM tbl_cliente WHERE cli_email = ? OR cli_cpf = ?");
+    $stmt->execute([$email, $cpf]);
+    if ($stmt->rowCount() > 0) {
+      echo "<script>alert('Email ou CPF ja cadastrados'); window.location.href='cadastro.php';</script>";
+    } elseif ($senha !== $passwordconfirm) {
+      echo "<script>alert('As senhas não coincidem'); window.location.href='cadastro.php';</script>";
+    } else {
+        // Insere os dados no banco
+        $stmt = $conexao->prepare("INSERT INTO tbl_cliente (cli_nome, cli_email, cli_cpf, cli_telefone, cli_dt_cadastro, cli_dt_nascimento, cli_senha) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$nome, $email, $cpf, $telefone, $data_cadastro, $datanasc, $senha]);
+        $_SESSION['idcliente'] = $conexao->lastInsertId(); 
+        echo "<script>alert('Usuario cadastrado!'); window.location.href='../index.php';</script>";
 
-            header('Location: ../index.php');
-            $_SESSION['idcliente'] = $row['id_cliente'];
-            $_SESSION['nome'] = $row['cli_nome'];
-            $_SESSION['email'] = $row['cli_email'];
-            $_SESSION['telefone'] = $row['cli_telefone'];
-            $_SESSION['cpf'] = $row['cli_cpf'];
-            exit(); 
-        } else {
-            echo '<script>alert("Usuário ou senha incorretos");</script>';
-        }
-    } catch (PDOException $e) {
-        echo "Mensagem de erro: " . $e->getMessage();
     }
 }
 ?>
@@ -67,26 +77,45 @@
 
       <div class="form-wrapper">
 
-        <h2>Log-in</h2>
-        <p>Insira suas credenciais para acessar sua conta.</p>
+        <h2>Cadastro</h2>  
         <form method="post">
           <div class="input-container">
+          <div class="form-group">
+              <label for="nome">Nome</label>
+              <input required name="nome" type="text" id="nome" autocomplete="off">
+            </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input name="email" type="email" id="email" autocomplete="off">
+              <input required name="email" type="email" id="email" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="cpf">CPF</label>
+              <input required name="cpf" type="text" id="cpf" autocomplete="off" maxlength="11">
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone</label>
+              <input required name="telefone" type="tel" id="telefone" autocomplete="off" maxlength="11">
+            </div>
+            <div class="form-group">
+              <label for="datanasc">Data de nascimento</label>
+              <input required name="datanasc" type="date" id="datanasc" autocomplete="off">
             </div>
             <div class="form-group">
               <label for="password">Senha</label>
-              <input name="senha" type="password" id="password">
+              <input required name="senha" type="password" id="password" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="passwordconfirm">Confirme sua senha</label>
+              <input required name="passwordconfirm" type="password" id="passwordconfirm">
             </div>
           </div>
 
-          <button class="login-btn">Entrar</button>
+          <button class="login-btn">Cadastrar-se</button>
         </form>
-        <div class="or-divider">não possui conta?</div>
+        <div class="or-divider">Ja possui conta?</div>
         <button class="google-signin">
 
-          <span><a href="cadastro.php">Cadastre-se</a></span>
+          <span><a href="login.php">Log-in</a></span>
         </button>
       </div>
 
