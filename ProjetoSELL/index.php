@@ -26,7 +26,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
   <div class="carousel w-full bg-white">
     <div id="slide1" class="carousel-item relative w-full">
       <img
-        src="img/Teste dahora.png"
+        src="img/banner 2.png"
         class="w-full" />
       <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
         <a href="#slide4" class="btn btn-circle btn-outline bg-myprimary">❮</a>
@@ -35,7 +35,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
     </div>
     <div id="slide2" class="carousel-item relative w-full">
       <img
-        src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
+        src="img/banner 1.png"
         class="w-full" />
       <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
         <a href="#slide1" class="btn btn-circle">❮</a>
@@ -44,7 +44,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
     </div>
     <div id="slide3" class="carousel-item relative w-full">
       <img
-        src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
+        src="img/banner 3.png"
         class="w-full" />
       <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
         <a href="#slide2" class="btn btn-circle">❮</a>
@@ -53,7 +53,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
     </div>
     <div id="slide4" class="carousel-item relative w-full">
       <img
-        src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
+        src="img/Teste dahora.png"
         class="w-full" />
       <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
         <a href="#slide3" class="btn btn-circle">❮</a>
@@ -65,7 +65,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
   <div class="bg-white border-b-2">
     <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
       <div>
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Joyce Galvão Modas</h2>
+        <h2 class="text-3xl font-bold tracking-tight text-myprimary sm:text-4xl">Joyce Galvão Modas</h2>
         <p class="mt-4 text-gray-500">Estilo e sofisticação entregues na sua porta em Aparecida e região. Descubra as últimas tendências e transforme seu guarda-roupa com nossa seleção!</p>
 
         <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
@@ -105,7 +105,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
   </div>
 
   <div class="container mx-auto px-4 py-6">
-
+  <h1 class="text-myprimary font-bold text-3xl">Produtos Populares</h1>
     <div class="overflow-x-auto p-10">
       <div class="flex space-x-16 min-w-max">
         <div class="card w-64 bg-white shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-105 border">

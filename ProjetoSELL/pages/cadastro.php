@@ -117,6 +117,7 @@ if (count($_POST) > 0) {
 
           <span><a href="login.php">Log-in</a></span>
         </button>
+        <div class="or-divider"><a href="../index.php">Voltar</div>
       </div>
 
     </div>

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    './node_modules/flowbite/**/*.js',
     './src/**/*.{html,js,php}', 
     './index.php',
     './pages/**/*.php',
@@ -28,6 +29,7 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),
     require('daisyui'),
+    require('flowbite/plugin'),
 ],
 }
 

@@ -70,52 +70,52 @@ $conn = null;
             <h2 class="font-bold text-lg mb-4">Filtros</h2>
             <!-- Filtro de Tamanho com Checkboxes -->
             <div class="mb-4">
-                <h3 class="font-semibold mb-2">Tamanho</h3>
+                <h3 class="font-semibold mb-2 text-myprimary">Tamanho</h3>
                 <div class="flex items-center space-x-2">
                     <label class="inline-flex items-center">
-                        <input type="checkbox" class="form-checkbox text-blue-600" name="size" value="small">
-                        <span class="ml-2">Pequeno</span>
+                        <input type="checkbox" class="checkbox text-blue-600" name="size" value="small">
+                        <span class="ml-2 text-black">Pequeno</span>
                     </label>
                     <label class="inline-flex items-center">
-                        <input type="checkbox" class="form-checkbox text-blue-600" name="size" value="medium">
-                        <span class="ml-2">Médio</span>
+                        <input type="checkbox" class="checkbox text-blue-600" name="size" value="medium">
+                        <span class="ml-2 text-black">Médio</span>
                     </label>
                     <label class="inline-flex items-center">
-                        <input type="checkbox" class="form-checkbox text-blue-600" name="size" value="large">
-                        <span class="ml-2">Grande</span>
+                        <input type="checkbox" class="checkbox text-blue-600" name="size" value="large">
+                        <span class="ml-2 text-black">Grande</span>
                     </label>
                 </div>
             </div>
             <!-- Repetir estrutura para cor, marca e material -->
             <!-- Filtro de Cor -->
             <div class="mb-4">
-                <h3 class="font-semibold mb-2">Cor</h3>
+                <h3 class="font-semibold mb-2 text-myprimary">Cor</h3>
                 <div class="flex items-center space-x-2">
                     <label class="inline-flex items-center">
-                        <input type="checkbox" class="form-checkbox" name="color" value="red">
-                        <span class="ml-2">Vermelho</span>
+                        <input type="checkbox" class="checkbox" name="color" value="red">
+                        <span class="ml-2 text-black">Vermelho</span>
                     </label>
                     <!-- Adicionar mais cores conforme necessário -->
                 </div>
             </div>
             <!-- Filtro de Marca -->
             <div class="mb-4">
-                <h3 class="font-semibold mb-2">Marca</h3>
+                <h3 class="font-semibold mb-2 text-myprimary">Marca</h3>
                 <div class="flex items-center space-x-2">
                     <label class="inline-flex items-center">
-                        <input type="checkbox" class="form-checkbox" name="brand" value="nike">
-                        <span class="ml-2">Nike</span>
+                        <input type="checkbox" class="checkbox" name="brand" value="nike">
+                        <span class="ml-2 text-black">marca X</span>
                     </label>
                     <!-- Adicionar mais marcas conforme necessário -->
                 </div>
             </div>
             <!-- Filtro de Material -->
             <div class="mb-4">
-                <h3 class="font-semibold mb-2">Material</h3>
+                <h3 class="font-semibold mb-2 text-myprimary">Material</h3>
                 <div class="flex items-center space-x-2">
                     <label class="inline-flex items-center">
-                        <input type="checkbox" class="form-checkbox" name="material" value="cotton">
-                        <span class="ml-2">Algodão</span>
+                        <input type="checkbox" class="checkbox" name="material" value="cotton">
+                        <span class="ml-2 text-black">Algodão</span>
                     </label>
                     <!-- Adicionar mais materiais conforme necessário -->
                 </div>

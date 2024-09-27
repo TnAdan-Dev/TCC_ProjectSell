@@ -1,8 +1,44 @@
 <?php
 session_start();
-
-
 include '../backend/conexao.php';
+
+$conn = novaConexao();
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!isset($_SESSION['idcliente'])) {
+        header('Location: login.php');
+    }
+}
+
+// Verifica se o ID do produto está na URL
+if (isset($_GET['id'])) {
+    $idProduto = $_GET['id'];
+
+    // Prepara a consulta para pegar o produto do banco de dados
+    $query = "SELECT * FROM tbl_produto WHERE id_produto = :idproduto";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':idproduto', $idProduto, PDO::PARAM_INT);
+    $stmt->execute();
+
+    // Busca o produto do banco de dados
+    $produto = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Verifica se o produto foi encontrado
+    if ($produto) {
+        // Armazena cada campo da tabela em uma variável
+        $nomeProduto = $produto['pro_nome'];
+        $precoProduto = $produto['pro_preco'];
+        $corProduto = $produto['pro_id_cor'];
+        $qtdDisponivelProduto = $produto['pro_qtd_disponivel'];
+        $categoriaProduto = $produto['pro_id_categoria'];
+    } else {
+        echo "Produto não encontrado.";
+    }
+} else {
+    echo "<script> alert(Nenhum ID de produto foi fornecido.) window.location.href='pesquisa.php';</script>";
+}
+
 
 
 ?>
@@ -12,19 +48,21 @@ include '../backend/conexao.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php ?></title>
+    <title><?= $nomeProduto ?></title>
     <link rel="stylesheet" href="../css/output.css">
     <link rel="icon" href="../img/iconJGM.png">
 </head>
 
-<body>
+<body class="bg-white">
+
+    <?php require_once '../utils/navbar.php' ?>
     <div class="bg-white">
         <div class="pt-6">
             <nav aria-label="Breadcrumb">
                 <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                     <li>
                         <div class="flex items-center">
-                            <a href="#" class="mr-2 text-sm font-medium text-gray-900">Men</a>
+                            <a href="#" class="mr-2 text-sm font-medium text-gray-900">Feminino</a>
                             <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true" class="h-5 w-4 text-gray-300">
                                 <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
                             </svg>
@@ -32,7 +70,7 @@ include '../backend/conexao.php';
                     </li>
                     <li>
                         <div class="flex items-center">
-                            <a href="#" class="mr-2 text-sm font-medium text-gray-900">Clothing</a>
+                            <a href="#" class="mr-2 text-sm font-medium text-gray-900">Roupas</a>
                             <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true" class="h-5 w-4 text-gray-300">
                                 <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
                             </svg>
@@ -40,7 +78,7 @@ include '../backend/conexao.php';
                     </li>
 
                     <li class="text-sm">
-                        <a href="#" aria-current="page" class="font-medium text-gray-500 hover:text-gray-600">Basic Tee 6-Pack</a>
+                        <a href="#" aria-current="page" class="font-medium text-gray-500 hover:text-gray-600"><?= $nomeProduto ?></a>
                     </li>
                 </ol>
             </nav>
@@ -66,46 +104,44 @@ include '../backend/conexao.php';
 
             <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
                 <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                    <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Basic Tee 6-Pack</h1>
+                    <h1 class="text-2xl font-bold tracking-tight text-myprimary sm:text-3xl"><?= $nomeProduto ?></h1>
                 </div>
 
 
                 <div class="mt-4 lg:row-span-3 lg:mt-0">
-                    <h2 class="sr-only">Product information</h2>
-                    <p class="text-3xl tracking-tight text-gray-900">$192</p>
+                    <h2 class="sr-only">Preço:</h2>
+                    <p class="text-3xl tracking-tight text-gray-900"> R$<?= $precoProduto ?></p>
 
 
                     <div class="mt-6">
-                        <h3 class="sr-only">Reviews</h3>
+                        <h3 class="sr-only">Avaliação</h3>
                         <div class="flex items-center">
                             <div class="flex items-center">
 
-                                <svg class="h-5 w-5 flex-shrink-0 text-gray-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <svg class="h-5 w-5 flex-shrink-0 text-myprimary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
                                 </svg>
-                                <svg class="h-5 w-5 flex-shrink-0 text-gray-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <svg class="h-5 w-5 flex-shrink-0 text-myprimary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
                                 </svg>
-                                <svg class="h-5 w-5 flex-shrink-0 text-gray-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <svg class="h-5 w-5 flex-shrink-0 text-myprimary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
                                 </svg>
-                                <svg class="h-5 w-5 flex-shrink-0 text-gray-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <svg class="h-5 w-5 flex-shrink-0 text-myprimary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
                                 </svg>
                                 <svg class="h-5 w-5 flex-shrink-0 text-gray-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <p class="sr-only">4 out of 5 stars</p>
-                            <a href="#" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">117 reviews</a>
+                            <p class="sr-only">4 de 5 estrelas</p>
+                            <a href="#" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">117 avaliações</a>
                         </div>
                     </div>
 
-                    <form class="mt-10">
-
+                    <form class="mt-10" method="post">
                         <div>
-                            <h3 class="text-sm font-medium text-gray-900">Color</h3>
-
+                            <h3 class="text-sm font-medium text-gray-900">Cores Disponiveis</h3>
                             <fieldset aria-label="Choose a color" class="mt-4">
                                 <div class="flex items-center space-x-3">
 
@@ -113,12 +149,10 @@ include '../backend/conexao.php';
                                         <input type="radio" name="color-choice" value="White" class="sr-only">
                                         <span aria-hidden="true" class="h-8 w-8 rounded-full border border-black border-opacity-10 bg-white"></span>
                                     </label>
-
                                     <label aria-label="Gray" class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-400 focus:outline-none">
                                         <input type="radio" name="color-choice" value="Gray" class="sr-only">
                                         <span aria-hidden="true" class="h-8 w-8 rounded-full border border-black border-opacity-10 bg-gray-200"></span>
                                     </label>
-
                                     <label aria-label="Black" class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 ring-gray-900 focus:outline-none">
                                         <input type="radio" name="color-choice" value="Black" class="sr-only">
                                         <span aria-hidden="true" class="h-8 w-8 rounded-full border border-black border-opacity-10 bg-gray-900"></span>
@@ -127,114 +161,60 @@ include '../backend/conexao.php';
                             </fieldset>
                         </div>
 
-
                         <div class="mt-10">
                             <div class="flex items-center justify-between">
-                                <h3 class="text-sm font-medium text-gray-900">Size</h3>
-                                <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size guide</a>
+                                <h3 class="text-sm font-medium text-myprimary">Tamanhos</h3>
                             </div>
 
                             <fieldset aria-label="Choose a size" class="mt-4">
                                 <div class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-
-                                    <label class="group relative flex cursor-not-allowed items-center justify-center rounded-md border bg-gray-50 px-4 py-3 text-sm font-medium uppercase text-gray-200 hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="XXS" disabled class="sr-only">
-                                        <span>XXS</span>
-                                        <span aria-hidden="true" class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
-                                            <svg class="absolute inset-0 h-full w-full stroke-2 text-gray-200" viewBox="0 0 100 100" preserveAspectRatio="none" stroke="currentColor">
-                                                <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke" />
-                                            </svg>
-                                        </span>
-                                    </label>
-
                                     <label class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
                                         <input type="radio" name="size-choice" value="XS" class="sr-only">
-                                        <span>XS</span>
-
-
+                                        <span>P</span>
                                         <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
                                     </label>
-
                                     <label class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
                                         <input type="radio" name="size-choice" value="S" class="sr-only">
-                                        <span>S</span>
-
-
+                                        <span>M</span>
                                         <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
                                     </label>
-
                                     <label class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
                                         <input type="radio" name="size-choice" value="M" class="sr-only">
-                                        <span>M</span>
-
+                                        <span>G</span>
                                         <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
                                     </label>
-                                    <!-- Active: "ring-2 ring-indigo-500" -->
                                     <label class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
                                         <input type="radio" name="size-choice" value="L" class="sr-only">
-                                        <span>L</span>
-
-                                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                                    </label>
-                                    <!-- Active: "ring-2 ring-indigo-500" -->
-                                    <label class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="XL" class="sr-only">
-                                        <span>XL</span>
+                                        <span>GG</span>
                                         <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
                                     </label>
 
-                                    <label class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                        <input type="radio" name="size-choice" value="2XL" class="sr-only">
-                                        <span>2XL</span>
-
-                                        <label class="group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6">
-                                            <input type="radio" name="size-choice" value="3XL" class="sr-only">
-                                            <span>3XL</span>
-
-                                            <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
-                                        </label>
                                 </div>
                             </fieldset>
                         </div>
 
-                        <button type="submit" class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to bag</button>
+                        <button class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-myprimary px-8 py-3 text-base font-medium text-white hover:text- hover:bg-mysecondary focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300">Adicionar ao Carrinho</button>
                     </form>
                 </div>
 
                 <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
-
                     <div>
-                        <h3 class="sr-only">Description</h3>
-
+                        <h3 class="sr-only">Descrição</h3>
                         <div class="space-y-6">
-                            <p class="text-base text-gray-900">The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: &quot;Black&quot;. Need to add an extra pop of color to your outfit? Our white tee has you covered.</p>
+                            <p class="text-base text-gray-900">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae voluptatibus cupiditate nesciunt. Beatae omnis dolor, fugiat fuga reprehenderit pariatur. Ad, magni quos? Recusandae repellat eaque, modi cum neque laboriosam optio vitae maiores veniam perferendis architecto minus ab iusto officiis ipsam ipsa repellendus, magnam non perspiciatis aperiam? Est iste cum amet.</p>
                         </div>
                     </div>
-
                     <div class="mt-10">
-                        <h3 class="text-sm font-medium text-gray-900">Highlights</h3>
-
-                        <div class="mt-4">
-                            <ul role="list" class="list-disc space-y-2 pl-4 text-sm">
-                                <li class="text-gray-400"><span class="text-gray-600">Hand cut and sewn locally</span></li>
-                                <li class="text-gray-400"><span class="text-gray-600">Dyed with our proprietary colors</span></li>
-                                <li class="text-gray-400"><span class="text-gray-600">Pre-washed &amp; pre-shrunk</span></li>
-                                <li class="text-gray-400"><span class="text-gray-600">Ultra-soft 100% cotton</span></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="mt-10">
-                        <h2 class="text-sm font-medium text-gray-900">Details</h2>
-
+                        <h2 class="text-sm font-medium text-gray-900">Detalhes</h2>
                         <div class="mt-4 space-y-6">
-                            <p class="text-sm text-gray-600">The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming &quot;Charcoal Gray&quot; limited release.</p>
+                            <p class="text-sm text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores cupiditate officiis nam culpa qui, repellendus aliquid ratione placeat. Ea obcaecati eveniet iure ad minus reprehenderit.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <?php require_once '../utils/footer.php' ?>
 
 </body>
 

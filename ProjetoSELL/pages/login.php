@@ -21,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Verifica se a senha hashada bate com a senha fornecida
-        if (password_verify($senha, $usuario['cli_senha'])) {
+        if ($senha = $usuario['cli_senha']) {
             // Senha correta, inicia a sessão
-            $_SESSION['usuario_id'] = $usuario['id_cliente'];
-            header('Location: index.php'); // Redireciona para a página inicial
+            $_SESSION['idcliente'] = $usuario['id_cliente'];
+            header('Location: ../index.php'); // Redireciona para a página inicial
             exit;
         } else {
           echo "<script>alert('A senha está incorreta');</script>";
@@ -85,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
           <span><a href="cadastro.php">Cadastre-se</a></span>
         </button>
+        <div class="or-divider"><a href="../index.php">Voltar</div>
       </div>
 
     </div>

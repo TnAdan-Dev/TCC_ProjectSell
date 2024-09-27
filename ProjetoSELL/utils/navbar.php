@@ -15,12 +15,13 @@ $clienteLogado = isset($_SESSION['idcliente']);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/iconJGM.png">
 </head>
 
 <body class="">
 
   <div class="bg-white font-ubuntu">
-    <!-- parte responsiva -->
+    <!-- parte responsiva (mudar depois)-->
     <div class="relative z-40 hidden" role="dialog" aria-modal="true" id="item3">
 
       <div class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
@@ -495,10 +496,15 @@ $clienteLogado = isset($_SESSION['idcliente']);
             <div class="ml-auto flex items-center">
               <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                 <?php if ($clienteLogado): ?>
-                  <div class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 ease-out hover:scale-105 transition-all duration-300 hover:text-black">
-                    <a href="<?php echo $base_url; ?>/backend/sessionclear.php">
-                      <img src="img/do-utilizador.png" alt="">
-                    </a>
+                  <div class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium ease-out  hover:text-black">
+                    <div class="dropdown">
+                      <div tabindex="0" role="button" class="hover:scale-105 transition-all duration-300"><img src="<?php echo $base_url; ?>/img/do-utilizador.png" alt=""></div>
+                      <ul tabindex="0" class="dropdown-content menu bg-white rounded-box z-[1] w-52 p-2 shadow">
+                        <li><a >Perfil</a></li>
+                        <hr>
+                        <li><a href="<?php echo $base_url; ?>/backend/sessionclear.php" class=" text-red-600">Sair</a></li>
+                      </ul>
+                    </div>
 
                   </div>
                 <?php else: ?>
@@ -524,7 +530,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
 
               <!-- Cart -->
               <div class="ml-4 flow-root lg:ml-6">
-                <a href="<?php echo $base_url; ?>/pages/cartsingle/[id].php" class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 ease-out hover:scale-105 transition-all duration-300 hover:text-myprimary">
+                <a href="<?php echo $base_url; ?>/pages/carrinho.php" class="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 ease-out hover:scale-105 transition-all duration-300 hover:text-myprimary">
                   <svg class="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                   </svg>
