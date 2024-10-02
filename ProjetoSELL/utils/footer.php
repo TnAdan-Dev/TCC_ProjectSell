@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo $base_url; ?>/css/output.css">
-</head>
-
-<body>
     <footer class="footer bg-white text-black p-10 border-t-2 mt-6">
         <aside>
             <svg
@@ -48,6 +39,3 @@
             <a class="link link-hover">Uso de Cookies</a>
         </nav>
     </footer>
-</body>
-
-</html>

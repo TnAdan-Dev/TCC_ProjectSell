@@ -9,18 +9,8 @@ $base_url .= "/TCC_ProjectSell/ProjetoSELL/";  // Ajuste para incluir o caminho 
 
 $clienteLogado = isset($_SESSION['idcliente']);
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="../img/iconJGM.png">
-</head>
-
-<body class="">
-
-  <div class="bg-white font-ubuntu">
+  <div class="bg-white font-ubuntu dark:bg-gray-800 !important">
     <!-- parte responsiva (mudar depois)-->
     <div class="relative z-40 hidden" role="dialog" aria-modal="true" id="item3">
 
@@ -258,12 +248,12 @@ $clienteLogado = isset($_SESSION['idcliente']);
     </div>
 
     <!-- parte normal(pc) -->
-    <header class="relative bg-white z-10 border-b-2">
+    <header class="relative bg-white z-10 border-b-2 dark:bg-gray-800">
 
       <nav aria-label="Top" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="border-b border-gray-200">
+        <div class="border-b border-gray-200 dark:border-myprimary">
           <div class="flex h-16 items-center">
-            <button type="button" class="relative rounded-md bg-white p-2 text-gray-400 lg:hidden" id="item3-btn">
+            <button type="button" class="relative rounded-md bg-white p-2 text-gray-400 lg:hidden dark:bg-gray-800 dark: dark:text-mysecondary" id="item3-btn">
               <span class="absolute -inset-0.5"></span>
               <span class="sr-only">Open menu</span>
               <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -541,7 +531,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
               <div class="ml-4 flow-root lg:ml-6 mt-2">
                 <label class="swap swap-rotate">
                   <!-- não tirar o hidden -->
-                  <input type="checkbox" class="theme-controller hidden" value="dark" />
+                  <input type="checkbox" class="theme-controller hidden" value="dark" id="theme-toggle" />
                   <!-- sol -->
                   <svg
                     class="swap-off h-7 w-7 fill-current text-myprimary"
@@ -569,6 +559,4 @@ $clienteLogado = isset($_SESSION['idcliente']);
 
 
   <script src="<?= $base_url ?>/js/inicio.js"></script>
-</body>
-
-</html>
+  <script src="<?= $base_url ?>/js/darkmode.js"></script>

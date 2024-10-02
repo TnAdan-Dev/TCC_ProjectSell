@@ -60,122 +60,125 @@ $conn = null;
     <?php require_once '../utils/navbar.php' ?>
 
 
-    <div class="flex p-5">
-        <!-- Sidebar para Filtros e Pesquisa -->
-        <div class="w-1/4 p-4 bg-white shadow-lg rounded">
-            <!-- Barra de Pesquisa -->
-            <div class="mb-4">
-                <input type="text" class="form-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Buscar produtos...">
-            </div>
-            <h2 class="font-bold text-lg mb-4">Filtros</h2>
-            <!-- Filtro de Tamanho com Checkboxes -->
-            <div class="mb-4">
-                <h3 class="font-semibold mb-2 text-myprimary">Tamanho</h3>
-                <div class="flex items-center space-x-2">
-                    <label class="inline-flex items-center">
-                        <input type="checkbox" class="checkbox text-blue-600" name="size" value="small">
-                        <span class="ml-2 text-black">Pequeno</span>
-                    </label>
-                    <label class="inline-flex items-center">
-                        <input type="checkbox" class="checkbox text-blue-600" name="size" value="medium">
-                        <span class="ml-2 text-black">Médio</span>
-                    </label>
-                    <label class="inline-flex items-center">
-                        <input type="checkbox" class="checkbox text-blue-600" name="size" value="large">
-                        <span class="ml-2 text-black">Grande</span>
-                    </label>
+    <div class="container mx-auto p-5">
+        <!-- Flex container para layout responsivo -->
+        <div class="flex flex-col lg:flex-row gap-5">
+            <!-- Sidebar para Filtros e Pesquisa -->
+            <div class="w-full lg:w-1/4 p-4 bg-white shadow-lg rounded mb-5 lg:mb-0">
+                <!-- Barra de Pesquisa -->
+                <div class="mb-4">
+                    <input type="text" class="form-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Buscar produtos...">
                 </div>
-            </div>
-            <!-- Repetir estrutura para cor, marca e material -->
-            <!-- Filtro de Cor -->
-            <div class="mb-4">
-                <h3 class="font-semibold mb-2 text-myprimary">Cor</h3>
-                <div class="flex items-center space-x-2">
-                    <label class="inline-flex items-center">
-                        <input type="checkbox" class="checkbox" name="color" value="red">
-                        <span class="ml-2 text-black">Vermelho</span>
-                    </label>
-                    <!-- Adicionar mais cores conforme necessário -->
-                </div>
-            </div>
-            <!-- Filtro de Marca -->
-            <div class="mb-4">
-                <h3 class="font-semibold mb-2 text-myprimary">Marca</h3>
-                <div class="flex items-center space-x-2">
-                    <label class="inline-flex items-center">
-                        <input type="checkbox" class="checkbox" name="brand" value="nike">
-                        <span class="ml-2 text-black">marca X</span>
-                    </label>
-                    <!-- Adicionar mais marcas conforme necessário -->
-                </div>
-            </div>
-            <!-- Filtro de Material -->
-            <div class="mb-4">
-                <h3 class="font-semibold mb-2 text-myprimary">Material</h3>
-                <div class="flex items-center space-x-2">
-                    <label class="inline-flex items-center">
-                        <input type="checkbox" class="checkbox" name="material" value="cotton">
-                        <span class="ml-2 text-black">Algodão</span>
-                    </label>
-                    <!-- Adicionar mais materiais conforme necessário -->
-                </div>
-            </div>
-        </div>
 
+                <!-- Filtros -->
+                <h2 class="font-bold text-lg mb-4">Filtros</h2>
+                <div class="space-y-4">
+                    <!-- Filtro de Tamanho -->
+                    <div class="mb-4">
+                        <h3 class="font-semibold text-myprimary mb-2">Tamanho</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <!-- Checkbox Pequeno -->
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="checkbox checkbox-primary bg-myprimary" name="size" value="small">
+                                <span class="text-black">Pequeno</span>
+                            </label>
 
-        <div class="w-3/4 pl-5">
-            <div class="grid grid-cols-4 gap-4">
-                <?php if (!empty($produtos)): ?>
-                    <?php foreach ($produtos as $produto): ?>
-                        <!-- Card de produto -->
-                        <a href="produto.php?id=<?php echo $produto['id']; ?>" class="mt-5 text-white font-bold py-2 px-4 rounded transform transition-transform duration-300 hover:scale-105">Ver Produto>
-                            <div class=" p-4 shadow rounded-lg ">
-                                <img src="https://picsum.photos/300/200" alt="<?php echo $produto['nome']; ?>" class="rounded mb-3 w-full" />
-                                <h3 class="text-lg font-bold my-5 text-myprimary"><?php echo $produto['nome']; ?></h3>
-                                <p class="text-black my-5">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></p>
+                            <!-- Checkbox Médio -->
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="checkbox checkbox-primary bg-myprimary" name="size" value="medium">
+                                <span class="text-black">Médio</span>
+                            </label>
 
-                            </div>
-                        </a>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>Nenhum produto disponível no momento.</p>
-                <?php endif; ?>
-            </div>
-        </div>
+                            <!-- Checkbox Grande -->
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="checkbox checkbox-primary bg-myprimary" name="size" value="large">
+                                <span class="text-black">Grande</span>
+                            </label>
+                        </div>
+                    </div>
 
+                    <!-- Filtro de Cor -->
+                    <div>
+                        <h3 class="font-semibold text-myprimary mb-2">Cor</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="checkbox" name="color" value="red">
+                                <span class="ml-2 text-black">Vermelho</span>
+                            </label>
+                            <!-- Adicionar mais opções conforme necessário -->
+                        </div>
+                    </div>
 
+                    <!-- Filtro de Marca -->
+                    <div>
+                        <h3 class="font-semibold text-myprimary mb-2">Marca</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="checkbox" name="brand" value="nike">
+                                <span class="ml-2 text-black">Marca X</span>
+                            </label>
+                        </div>
+                    </div>
 
-    </div>
-    <div class="mt-6">
-        <nav class="flex justify-center">
-            <div class="join">
-                <!-- Botão de página anterior -->
-                <?php if ($paginaAtual > 1): ?>
-                    <a href="?pagina=<?php echo $paginaAtual - 1; ?>" class="join-item btn bg-white text-black">«</a>
-                <?php else: ?>
-                    <span class="join-item btn disabled bg-white text-black hover:text-white">«</span>
-                <?php endif; ?>
-
-                <!-- Botão com a página atual e dropdown para escolher uma página -->
-                <div class="relative inline-block">
-                    <button class="join-item btn bg-white text-black hover:text-white">Page <?php echo $paginaAtual; ?></button>
-                    <div class="absolute left-0 mt-2 w-40 bg-white border rounded shadow hidden group-hover:block z-10">
-                        <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
-                            <a href="?pagina=<?php echo $i; ?>" class="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200">
-                                Page <?php echo $i; ?>
-                            </a>
-                        <?php endfor; ?>
+                    <!-- Filtro de Material -->
+                    <div>
+                        <h3 class="font-semibold text-myprimary mb-2">Material</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="inline-flex items-center">
+                                <input type="checkbox" class="checkbox" name="material" value="cotton">
+                                <span class="ml-2 text-black">Algodão</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Botão de próxima página -->
-                <?php if ($paginaAtual < $totalPaginas): ?>
-                    <a href="?pagina=<?php echo $paginaAtual + 1; ?>" class="join-item btn bg-white text-black hover:text-white">»</a>
-                <?php else: ?>
-                    <span class="join-item btn disabled bg-white text-black">»</span>
-                <?php endif; ?>
             </div>
-        </nav>
+
+            <!-- Listagem de Produtos -->
+            <div class="w-full lg:w-3/4">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <?php if (!empty($produtos)): ?>
+                        <?php foreach ($produtos as $produto): ?>
+                            <!-- Card de produto -->
+                            <a href="produto.php?id=<?php echo $produto['id']; ?>" class="block bg-white shadow rounded-lg transform transition-transform duration-300 hover:scale-105">
+                                <img src="https://picsum.photos/300/200" alt="<?php echo $produto['nome']; ?>" class="rounded-t-lg w-full" />
+                                <div class="p-4">
+                                    <h3 class="text-lg font-bold text-myprimary mb-2"><?php echo $produto['nome']; ?></h3>
+                                    <p class="text-black mb-4">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></p>
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>Nenhum produto disponível no momento.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paginação -->
+        <div class="mt-6">
+            <nav class="flex justify-center">
+                <div class="join">
+                    <!-- Botão de página anterior -->
+                    <?php if ($paginaAtual > 1): ?>
+                        <a href="?pagina=<?php echo $paginaAtual - 1; ?>" class="join-item btn bg-white text-black">«</a>
+                    <?php else: ?>
+                        <span class="join-item btn disabled bg-white text-black">«</span>
+                    <?php endif; ?>
+
+                    <!-- Botão de página atual -->
+                    <div class="relative inline-block">
+                        <button class="join-item btn bg-white text-black">Page <?php echo $paginaAtual; ?></button>
+                    </div>
+
+                    <!-- Botão de próxima página -->
+                    <?php if ($paginaAtual < $totalPaginas): ?>
+                        <a href="?pagina=<?php echo $paginaAtual + 1; ?>" class="join-item btn bg-white text-black">»</a>
+                    <?php else: ?>
+                        <span class="join-item btn disabled bg-white text-black">»</span>
+                    <?php endif; ?>
+                </div>
+            </nav>
+        </div>
     </div>
 
 

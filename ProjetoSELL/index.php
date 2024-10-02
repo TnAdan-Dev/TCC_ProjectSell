@@ -18,7 +18,12 @@ $clienteLogado = isset($_SESSION['idcliente']);
   <link rel="icon" href="img/iconJGM.png">
 </head>
 
-<body class="bg-white darl:bg-dark">
+<body class="bg-white">
+
+<a href="teste.php">teste</a>
+  <div class="bg-white dark:bg-red-500 p-4 text-center">
+    Teste de cor
+  </div>
   <?php
   require_once 'utils/navbar.php';
   ?>
@@ -62,7 +67,7 @@ $clienteLogado = isset($_SESSION['idcliente']);
     </div>
   </div>
 
-  <div class="bg-white border-b-2">
+  <div class="bg-white border-b-2 dark:bg-gray-800">
     <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
       <div>
         <h2 class="text-3xl font-bold tracking-tight text-myprimary sm:text-4xl">Joyce Galvão Modas</h2>
